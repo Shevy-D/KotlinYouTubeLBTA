@@ -34,6 +34,8 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
         val channelProfileImageView =
             holder.view.findViewById<CircleImageView>(R.id.imageView_channel_profile)
         Picasso.get().load(video.channel.profileimageUrl).into(channelProfileImageView)
+
+        holder.video = video
     }
 
     override fun getItemCount(): Int {
@@ -41,7 +43,12 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
     }
 }
 
-class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+class CustomViewHolder(val view: View, var video: Video? = null) : RecyclerView.ViewHolder(view) {
+
+    companion object {
+        val VIDEO_TITLE_KEY = "VIDEO_TITLE"
+        val VIDEO_ID_KEY = "VIDEO_ID"
+    }
 
     init {
         view.setOnClickListener {
@@ -49,6 +56,8 @@ class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
             val intent = Intent(view.context, CourseDetailActivity::class.java)
 
+            intent.putExtra(VIDEO_TITLE_KEY, video?.name)
+            intent.putExtra(VIDEO_ID_KEY, video?.id)
             view.context.startActivity(intent)
 
         }
