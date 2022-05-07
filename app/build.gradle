@@ -49,4 +49,8 @@ dependencies {
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
