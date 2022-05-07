@@ -1,5 +1,6 @@
 package com.shevy.kotlinyoutubelbta
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,4 +42,15 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 }
 
 class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+
+    init {
+        view.setOnClickListener {
+            println("TEST")
+
+            val intent = Intent(view.context, CourseDetailActivity::class.java)
+
+            view.context.startActivity(intent)
+
+        }
+    }
 }
